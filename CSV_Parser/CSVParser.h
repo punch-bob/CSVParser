@@ -71,7 +71,7 @@ public:
 			if (readed_elements  < sizeof...(Types))
 			{
 				
-				throw Exceptions("Bad file format in " + std::to_string(count_lines) + " row, " + std::to_string(readed_elements + 1) + " column");
+				throw Exceptions("Bad file format in " + std::to_string(count_lines + 1) + " row, " + std::to_string(readed_elements + 1) + " column");
 			}
 		}
 	private:

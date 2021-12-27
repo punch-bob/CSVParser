@@ -41,6 +41,13 @@ bool convert(const std::string& str, T& t)
 	return true;
 }
 
+template<>
+bool convert<std::string>(const std::string& str, std::string& out_str) 
+{
+	out_str = str;
+	return true;
+}
+
 template<size_t Iter, typename... Types>
 struct tuple_reader
 {

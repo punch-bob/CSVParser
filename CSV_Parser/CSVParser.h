@@ -33,7 +33,7 @@ public:
 			{
 				return *this;
 			}
-			if (!parser->valid())
+			if ((parser->stream->peek() == EOF))
 			{
 				parser = nullptr;
 				return *this;
@@ -71,7 +71,7 @@ public:
 			if (readed_elements  < sizeof...(Types))
 			{
 				
-				throw Exceptions("Bad file format in " + std::to_string(count_lines) + " row, " + std::to_string(readed_elements + 1) + " column");
+				throw Exceptions("Bad file format in " + std::to_string(count_lines + 1) + " row, " + std::to_string(readed_elements + 1) + " column");
 			}
 		}
 	private:
@@ -101,11 +101,6 @@ public:
 	Iterator end()
 	{
 		return Iterator(nullptr);
-	}
-
-	bool valid()
-	{
-		return stream->peek() != EOF;
 	}
 
 	template<typename... Types>
